@@ -1,26 +1,187 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* AURORA Color Palette - Aurora Borealis Theme */
+  --aurora-bg-primary: #0F0F1F;
+  --aurora-bg-secondary: #1A1B2E;
+  --aurora-purple-deep: #3D2B5E;
+  --aurora-purple-mid: #4A3B6B;
+  --aurora-pink: #FF4E88;
+  --aurora-pink-light: #E94B8F;
+  --aurora-mint: #7FDBCA;
+  --aurora-mint-light: #6DD5C3;
+  --aurora-blue-dark: #1E2139;
+  --aurora-text-primary: #FFFFFF;
+  --aurora-text-secondary: #B8B9C9;
+  
+  --background: var(--aurora-bg-primary);
+  --foreground: var(--aurora-text-primary);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Aurora Theme Colors */
+  --color-aurora-bg-primary: #0F0F1F;
+  --color-aurora-bg-secondary: #1A1B2E;
+  --color-aurora-purple: #3D2B5E;
+  --color-aurora-purple-mid: #4A3B6B;
+  --color-aurora-pink: #FF4E88;
+  --color-aurora-pink-light: #E94B8F;
+  --color-aurora-mint: #7FDBCA;
+  --color-aurora-mint-light: #6DD5C3;
+  --color-aurora-blue-dark: #1E2139;
+  --color-aurora-text-primary: #FFFFFF;
+  --color-aurora-text-secondary: #B8B9C9;
+  
+  --color-background: var(--aurora-bg-primary);
+  --color-foreground: var(--aurora-text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Aurora Gradient Backgrounds */
+.aurora-gradient {
+  background: linear-gradient(135deg, var(--aurora-purple-deep) 0%, var(--aurora-pink) 50%, var(--aurora-mint) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.aurora-gradient::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 78, 136, 0.3) 0%, transparent 70%);
+  animation: aurora-move 15s ease-in-out infinite;
+}
+
+@keyframes aurora-move {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(20%, 20%); }
+  50% { transform: translate(-20%, 10%); }
+  75% { transform: translate(10%, -20%); }
+}
+
+.aurora-gradient-radial {
+  background: radial-gradient(circle at 50% 50%, var(--aurora-pink) 0%, var(--aurora-purple-deep) 50%, var(--aurora-bg-primary) 100%);
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(26, 27, 46, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.37),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Neumorphism Effect */
+.neomorphism {
+  background: var(--aurora-bg-secondary);
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.4),
+    -8px -8px 16px rgba(74, 59, 107, 0.1);
+}
+
+.neomorphism-inset {
+  background: var(--aurora-bg-secondary);
+  box-shadow: 
+    inset 4px 4px 8px rgba(0, 0, 0, 0.4),
+    inset -4px -4px 8px rgba(74, 59, 107, 0.1);
+}
+
+/* Glowing Effects */
+.glow-green {
+  box-shadow: 0 0 20px rgba(30, 215, 96, 0.5);
+}
+
+.glow-pink {
+  box-shadow: 0 0 30px rgba(255, 78, 136, 0.6);
+}
+
+.glow-purple {
+  box-shadow: 0 0 25px rgba(138, 43, 226, 0.5);
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Glow */
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(30, 215, 96, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(30, 215, 96, 0.8);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* 3D Perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Radial Gradient */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--aurora-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--aurora-purple-mid);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--aurora-pink);
 }
