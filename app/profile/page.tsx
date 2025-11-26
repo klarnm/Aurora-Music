@@ -84,15 +84,7 @@ export default function ProfilePage() {
               {/* Avatar */}
               <div className="relative">
                 <div className="w-48 h-48 rounded-full bg-linear-to-br from-aurora-pink via-purple-500 to-blue-500 flex items-center justify-center shadow-2xl shadow-aurora-pink/50">
-                  {session.user.image ? (
-                    <img 
-                      src={session.user.image} 
-                      alt={session.user.name || 'User'} 
-                      className="w-full h-full rounded-full object-cover"
-                    />
-                  ) : (
-                    <FaUser className="text-7xl text-white/90" />
-                  )}
+                  <FaUser className="text-7xl text-white/90" />
                 </div>
                 <div className="absolute inset-0 rounded-full bg-linear-to-br from-aurora-pink/20 to-purple-600/20 blur-3xl -z-10" />
               </div>
